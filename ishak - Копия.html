@@ -1,0 +1,149 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Милый сайт</title>
+    <style>
+        body {
+            background: pink url('https://www.transparenttextures.com/patterns/stardust.png');
+            text-align: center;
+            padding-top: 10%;
+            font-size: 2em;
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            position: relative;
+            display: inline-block;
+            width: 70%;
+            height: 150px;
+        }
+        p {
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            font-size: 2em;
+            transition: 0.3s;
+            margin-bottom: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            width: 100px; /* Фиксированная ширина кнопки */
+            height: 40px; /* Фиксированная высота кнопки */
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 2px 2px 4px #000000;
+            cursor: pointer;
+            position: absolute;
+            bottom: 0;
+        }
+        #yesBtn {
+            background-color: lightgreen;
+            left: 0;
+            bottom: -70px;
+            position: relative; /* Добавлено для корректного позиционирования текста */
+            /* Добавлено для анимации пульсации */
+            animation: pulse 2s infinite;
+        }
+        #noBtn {
+            background-color: lightcoral;
+            right: 0;
+            transition: 0.6s;
+            width: 80px;
+            bottom: -70px;
+            position: relative; /* Добавлено для корректного позиционирования текста */
+        }
+        #yesBtn span, #noBtn span {
+            position: relative;
+            top: -5px; /* Поднимает текст на 5px, можно настроить по вашему усмотрению */
+        }
+        img {
+            width: 40%;
+            margin-bottom: 50px;
+        }
+        @media only screen and (max-width: 600px) {
+            body {
+                padding-top: 20%;
+            }
+            p {
+                font-size: 1.5em;
+            }
+            button {
+                padding: 5px 10px;
+                font-size: 0.8em;
+            }
+        }
+        /* Добавлено для анимации пульсации */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+    <!-- Добавленные теги и скрипты для снегопада -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/snow.min.css">
+</head>
+<body>
+    <img src="https://i.gifer.com/Ve1.gif" alt="Cute gif">
+    <img src="https://i.gifer.com/origin/a2/a2e2a2c040792f1da66cdc70e92c5bd7_w200.gif" alt="Cute gif">
+    <div id="container">
+        <p id="question">Жасминаааа, пойдем гулять в субботу?</p>
+        <button id="yesBtn" onclick="celebrate()"><span>Да</span></button>
+        <button id="noBtn" onclick="moveButton()"><span>Нет</span></button>
+    </div>
+    <!-- Внедрение снегопада -->
+    <script src="https://cdn.jsdelivr.net/gh/Alaev-Co/snowflakes/dist/Snow.min.js"></script>
+    <script>
+        new Snow();
+    </script>
+    <!-- Ваши существующие скрипты -->
+    <script>
+        function moveButton() {
+    var container = document.getElementById('container');
+    var noBtn = document.getElementById('noBtn');
+    
+    // Ограничиваем максимальное смещение вправо до 70% ширины контейнера
+    var maxRightX = container.offsetWidth * 0.1;
+    
+    // Увеличиваем максимальное смещение влево до 30% ширины контейнера
+    var maxLeftX = container.offsetWidth * 0.6;
+    
+    // Генерируем случайное смещение в пределах установленных границ
+    var x = Math.random() * (maxRightX + maxLeftX) - maxLeftX;
+    var y = Math.random() * (container.offsetHeight - noBtn.offsetHeight);
+    
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+}
+        function celebrate() {
+    var overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+
+    var image = document.createElement('img');
+    image.src = 'https://i.postimg.cc/xCM1Yr3b/20231225-213408.jpg';
+    image.style.width = '80%';
+    image.style.borderRadius = '10px';
+
+    overlay.appendChild(image);
+    document.body.appendChild(overlay);
+
+    document.getElementById('question').style.color = 'lightgreen';
+    document.getElementById('question').style.textShadow = '2px 2px 4px lightgreen';
+}
+    </script>
+</body>
+</html>
